@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::Read;
 use std::path::PathBuf;
 
+#[derive(Clone)]
 pub enum InputType {
     Test,
     Input(PathBuf),

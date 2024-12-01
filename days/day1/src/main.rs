@@ -45,21 +45,51 @@ fn solve_part_1(input_type: InputType) -> anyhow::Result<u32> {
     Ok(result)
 }
 
+fn solve_part_2(input_type: InputType) -> anyhow::Result<usize> {
+    let input = get_input(input_type)?;
+    let input: &'static str = input.leak();
+    let (_, tokens) = tokens(input)?;
+
+    let (left_tokens, right_tokens): (Vec<_>, Vec<_>) = tokens.into_iter().unzip();
+
+    let result: usize = left_tokens
+        .into_iter()
+        .map(|token| {
+            let count = right_tokens
+                .iter()
+                .filter(|&&other_token| other_token == token)
+                .count();
+            count * token as usize
+        })
+        .sum();
+
+    Ok(result)
+}
+
 fn main() -> anyhow::Result<()> {
-    println!("{}", std::env::current_dir()?.as_os_str().to_string_lossy());
-    let part1_result = solve_part_1(InputType::Input(PathBuf::from("./days/day1/input.txt")))?;
+    let input_type = InputType::Input(PathBuf::from("./days/day1/input.txt"));
+    let part1_result = solve_part_1(input_type.clone())?;
     println!("Part 1: {}", part1_result);
+    let part2_result = solve_part_2(input_type)?;
+    println!("Part 2: {}", part2_result);
     Ok(())
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::{solve_part_1, tokens};
-    use common::{get_input, InputType};
+    use crate::{solve_part_1, solve_part_2};
+    use common::InputType;
 
     #[test]
     fn test_part1() -> anyhow::Result<()> {
         let res = solve_part_1(InputType::Test);
+        println!("{}", res?);
+        Ok(())
+    }
+
+    #[test]
+    fn test_part2() -> anyhow::Result<()> {
+        let res = solve_part_2(InputType::Test);
         println!("{}", res?);
         Ok(())
     }
