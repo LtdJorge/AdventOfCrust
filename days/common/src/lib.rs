@@ -1,6 +1,4 @@
-use std::fs::File;
-use std::io::Read;
-use std::path::PathBuf;
+use std::{fs::File, io::Read, path::PathBuf};
 
 #[derive(Clone)]
 pub enum InputType {

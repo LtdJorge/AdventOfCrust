@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["days/common", "days/day1", "days/day2"]
+members = ["days/common", "days/day1", "days/day2", "days/day3"]
 
 [workspace.dependencies]
 serde = { version = "1.0.215", features = ["derive"] }
