@@ -1,7 +1,7 @@
 use crate::lexer::Token;
-use chumsky::extra::State;
-use chumsky::input::MapExtra;
 use chumsky::{
+    extra::State,
+    input::MapExtra,
     prelude::{any, choice, group, just},
     IterParser, Parser,
 };
