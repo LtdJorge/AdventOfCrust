@@ -5,8 +5,12 @@ edition = "2021"
 
 [dependencies]
 anyhow.workspace = true
+chumsky.workspace = true
 common = { path = "../common" }
 
 [dependencies.logos]
 workspace = true
-features = ["debug"]
+
+[features]
+default = []
+debug = ["logos/debug"]
