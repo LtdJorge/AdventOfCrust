@@ -1,5 +1,7 @@
 # Advent of Code 2024 in Rust
 
+## Using lexer generators, parser combinators and Rust iterators
+
 Completion status:
 
 - [x] Day 1
