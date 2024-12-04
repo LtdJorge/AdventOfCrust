@@ -1,0 +1,2 @@
+[build]
+rustflags = ["-C", "target-cpu=znver2", "-C", "target-feature=+sse3,+sse4.1,+sse4.2,+ssse3,+avx,+avx2,+fma,+f16c,+popcnt,+rdrand"]
