@@ -155,18 +155,12 @@ fn compute_diag(
     counter: &mut usize,
 ) {
     if let Some(found_char) = look(dir_first, position as isize, 1, chars) {
-        match found_char == 'M' {
-            true => {
-                if let Some(found_char) = look(dir_second, position as isize, 1, chars) {
-                    match found_char == 'S' {
-                        true => {
-                            counter.add_assign(1);
-                        }
-                        false => {}
-                    }
+        if found_char == 'M' {
+            if let Some(found_char) = look(dir_second, position as isize, 1, chars) {
+                if found_char == 'S' {
+                    counter.add_assign(1);
                 }
             }
-            false => {}
         }
     }
 }
