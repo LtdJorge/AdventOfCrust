@@ -4,3 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+logos = { workspace = true }
+anyhow = { workspace = true }
+chumsky = { workspace = true }
+common = { path = "../common" }
+ahash = "0.8.11"
