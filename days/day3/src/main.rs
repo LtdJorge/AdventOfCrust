@@ -6,6 +6,7 @@ use crate::{
     parser::{ParserState, ParserStatus},
 };
 use anyhow::anyhow;
+use chumsky::extra::SimpleState;
 use chumsky::Parser;
 use common::{get_input, InputType};
 use logos::Logos;
@@ -40,11 +41,11 @@ fn solve_part_2(input_type: InputType) -> anyhow::Result<u32> {
             }
         })
         .collect::<Vec<_>>();
-    let mut state = ParserState {
+    let state = ParserState {
         status: ParserStatus::Enabled,
     };
     let (values, _) = parser::parser()
-        .parse_with_state(tokens.as_slice(), &mut state)
+        .parse_with_state(tokens.as_slice(), &mut SimpleState(state))
         .into_output_errors();
     let values = values.ok_or(anyhow!("Parser didn't return any values"))?;
 
